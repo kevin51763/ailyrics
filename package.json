@@ -1,0 +1,14 @@
+{
+  "name": "ailyrics",
+  "version": "0.1.0",
+  "description": "A music player that directs real-time visuals for any song with an LLM",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22.9"
+  }
+}

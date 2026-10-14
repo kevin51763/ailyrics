@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI 歌词画面</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="stage"></canvas>
+  <audio id="audio" preload="auto"></audio>
+
+  <div id="empty" class="empty">
+    <h1>把歌拖进来</h1>
+    <p>支持一次放入多首歌。同名的 .lrc 歌词文件会自动配对；没有歌词时会去 LRCLIB 查找。</p>
+    <button id="pick-empty" class="primary">选择音乐文件</button>
+  </div>
+
+  <aside id="queue" class="queue" hidden>
+    <header>
+      <span>播放队列</span>
+      <button id="close-queue" class="icon" title="关闭">✕</button>
+    </header>
+    <ol id="queue-list"></ol>
+  </aside>
+
+  <footer id="bar" class="bar">
+    <div class="row">
+      <button id="prev" class="icon" title="上一首">⏮</button>
+      <button id="play" class="icon play" title="播放 / 暂停（空格）">▶</button>
+      <button id="next" class="icon" title="下一首">⏭</button>
+      <div class="now">
+        <div id="now-title" class="now-title">未选择歌曲</div>
+        <div id="status" class="status"></div>
+      </div>
+      <button id="edit" class="text" title="修改歌名和歌手">信息</button>
+      <button id="pick-audio" class="text">音乐</button>
+      <button id="pick-lrc" class="text">歌词</button>
+      <button id="regen" class="text" title="让 AI 重新设计画面">重新生成</button>
+      <button id="toggle-queue" class="text">队列</button>
+      <button id="fullscreen" class="icon" title="全屏（F）">⛶</button>
+    </div>
+    <div class="row seek">
+      <span id="time">0:00</span>
+      <input id="seek" type="range" min="0" max="1000" value="0" step="1">
+      <span id="duration">0:00</span>
+    </div>
+  </footer>
+
+  <input id="audio-input" type="file" accept="audio/*" multiple hidden>
+  <input id="lrc-input" type="file" accept=".lrc,.txt" multiple hidden>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
